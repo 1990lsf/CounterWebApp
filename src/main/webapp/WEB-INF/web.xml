@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+  <display-name></display-name>	
+    <!-- spring -->
+ <!-- ApplicationContext的配置文件 设置spring容器加载配置文件路径-->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            /WEB-INF/spitter-servlet.xml
+        </param-value>
+    </context-param>
+ 
+    <!-- 用于加载上下文的监听器 加载spring容器 -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+  <!-- Listener log4jConfigLocation 
+   <listener>
+     <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+   </listener>
+   -->
+   <!-- log4j -->
+    <context-param>  
+        <param-name>isLog4jAutoInitializationDisabled</param-name>  
+        <param-value>false</param-value>  
+    </context-param>  
+    <!-- 默认就会找这个文件，不需要额外配置引用  
+    <context-param>  
+        <param-name>log4jConfiguration</param-name>  
+        <param-value>classpath:/log4j2.xml</param-value>  
+    </context-param>  
+   -->
+    <listener>  
+        <listener-class>org.apache.logging.log4j.web.Log4jServletContextListener</listener-class>  
+    </listener>  
+   
+    <filter>  
+        <filter-name>log4jServletFilter</filter-name>  
+        <filter-class>org.apache.logging.log4j.web.Log4jServletFilter</filter-class>  
+    </filter>  
+    <filter-mapping>  
+        <filter-name>log4jServletFilter</filter-name>  
+        <url-pattern>/*</url-pattern>  
+        <dispatcher>REQUEST</dispatcher>  
+        <dispatcher>FORWARD</dispatcher>  
+        <dispatcher>INCLUDE</dispatcher>  
+        <dispatcher>ERROR</dispatcher>  
+    </filter-mapping>
+    
+  <!-- 中文过滤器 -->
+     <filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding </param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+    <!-- 中文过滤器 -->
+  
+  
+<!-- Spring MVC begin-->
+    <servlet>
+    <servlet-name>spitter</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+    </servlet>
+   <servlet-mapping>
+   <servlet-name>spitter</servlet-name>
+   <url-pattern>/</url-pattern>
+   </servlet-mapping>
+   <!-- end -->
+ 
+  <!-- <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list> -->
+   <resource-ref>
+	    <description>MySQL Datasource example</description>
+	    <res-ref-name>jdbc/pf</res-ref-name>
+	    <res-type>javax.sql.DataSource</res-type>
+	    <res-auth>Container</res-auth>
+  	</resource-ref>
+</web-app>
