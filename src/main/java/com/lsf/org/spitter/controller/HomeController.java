@@ -23,18 +23,24 @@ public class HomeController {
 	public HomeController(SpitterService spitterService) {
 		this.spitterService = spitterService;
 	}
-
-	@RequestMapping
-	public String showHomePage(Map<String, Object> model) {
-		System.out.println("i am here");
-		model.put("message","hellworld");
-		return "home";
-	}
 	
+	@RequestMapping(value="/add",method=RequestMethod.GET)
 	public String add(Map<String,Object> model){
 		System.out.println("add method");
 		model.put("message","add method");
 		return "add";
 	}
 	
+	@RequestMapping(value="/addTest",method=RequestMethod.GET)
+	public String addTest(Map<String,Object> model){
+		System.out.println("add test  method");
+		model.put("message","add test method");
+		return "addTest";
+	}
+	@RequestMapping(value="/showhome",method=RequestMethod.GET)
+	public String showHome(Map<String,Object> model){
+		System.out.println("show home  method");
+		model.put("message","show home method");
+		return "showhome";
+	}
 }

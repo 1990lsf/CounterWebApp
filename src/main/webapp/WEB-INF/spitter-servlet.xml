@@ -18,8 +18,7 @@
         <!-- 处理对静态资源的请求 -->
 <mvc:resources mapping="/common/**" location="/common/"/>
 <mvc:annotation-driven/>
-<context:component-scan base-package="com.lsf.org.spitter."></context:component-scan>
-
+<context:component-scan base-package="com.lsf.org.spitter.*"></context:component-scan>
 <bean id="viewResolver" class = "org.springframework.web.servlet.view.InternalResourceViewResolver">
 <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
 <property name="prefix" value="/WEB-INF/views/"/>
