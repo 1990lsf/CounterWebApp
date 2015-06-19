@@ -41,6 +41,6 @@ public class HomeController {
 	public String showHome(Map<String,Object> model){
 		System.out.println("show home  method");
 		model.put("message","show home method");
-		return "showhome";
+		return "home";
 	}
 }

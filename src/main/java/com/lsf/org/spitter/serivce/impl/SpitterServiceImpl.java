@@ -31,14 +31,39 @@ public class SpitterServiceImpl implements SpitterService{
 	    
 	    return list;
 	  }
-	  
-	 
-	  
 
+	public void startFollowing(Spitter follower, Spitter followee) {
+		// TODO Auto-generated method stub
+	}
 
-	  public void startFollowing(Spitter follower, Spitter followee) {
-	    // TODO Auto-generated method stub  
-	  }
+	@Override
+	public Spitter getSpitter(String username) {
+		Spitter spitter = new Spitter();
+		spitter.setUsername("Lili");
+		spitter.setEmail("1243@12.com");
+		spitter.setFullName("John.Lilies");
+		spitter.setId("000987");
+		spitter.setPassword("325325432");
+		List<Spittle> spittles = new ArrayList();
+		spitter.setSpittles(spittles);
+		spitter.setUpdateByEmail(true);
+		return spitter;
+	}
+
+	@Override
+	public List<Spittle> getSpitterlesForSpitter(String username) {
+		List<Spittle> spittle_list = new ArrayList();
+		
+		for(int i=0,j=10;i<j;i++){
+			Spittle ObjectSpittle = new Spittle();
+			ObjectSpittle.setText("32532532");
+			ObjectSpittle.setWhen(new Date());
+			ObjectSpittle.setId(String.valueOf(i));
+			spittle_list.add(ObjectSpittle);
+			
+		}
+		return spittle_list;
+	}
 	  
 	
 }

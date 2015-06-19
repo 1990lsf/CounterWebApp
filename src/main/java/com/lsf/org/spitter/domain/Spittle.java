@@ -3,21 +3,21 @@ package com.lsf.org.spitter.domain;
 import java.util.Date;
 
 public class Spittle {
-	private Long id;
+	private String id;
 	private Spitter spitter;
 	private String text;
 	private Date when;
 
 	public Spittle() {
 		this.spitter = new Spitter(); // HARD-CODED FOR NOW
-		this.spitter.setId((long) 1);
+		this.spitter.setId("1");
 	}
 
-	public Long getId() {
+	public String getId() {
 		return this.id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

@@ -3,7 +3,7 @@ package com.lsf.org.spitter.domain;
 import java.util.List;
 
 public class Spitter {
-	private Long id;
+	private String id;
 	private String username;
 	private String password;
 	private String fullName;
@@ -11,11 +11,11 @@ public class Spitter {
 	private String email;
 	private boolean updateByEmail;
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
