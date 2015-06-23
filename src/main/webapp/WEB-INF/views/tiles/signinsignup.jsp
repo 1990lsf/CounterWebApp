@@ -1,8 +1,8 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <div>        
-  <sec:authorize access="!isAuthenticated()">
+ 
 			
 		<div class="msg">
 		  <h3>Please Sign In!</h3>
@@ -35,9 +35,7 @@
 		  <br/>
 		  It's fast and easy!
 		</div>
-	</sec:authorize>
-	
-  <sec:authorize access="isAuthenticated()">
+
     <s:url value="/common/images" var="images_url" />
 	  <img src="${images_url}/spitter_me.jpg" align="middle"/>
 	  <span><sec:authentication 
@@ -46,9 +44,8 @@
     <s:url value="/static/j_spring_security_logout" 
                 var="logout_url" /> 
 	  <a href="${logout_url}">Logout</a>
-	  <sec:authorize url="/admin">
+	
       <s:url value="/admin" var="admin_url" />
 	    <br/><a href="${admin_url}">Admin</a>
-	  </sec:authorize>
-	</sec:authorize>
+	 
 </div>

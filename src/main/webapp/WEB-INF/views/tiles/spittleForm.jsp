@@ -1,11 +1,11 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <div>
      
   <!--<start id="securityAuthorizeTag_access"/>--> 
-	<sec:authorize access="hasRole('ROLE_SPITTER')">
+	
 	<!--<co id="co_renderForRoleSpitter"/>-->
     <s:url value="/spittles" var="spittle_url" />
 	  <sf:form modelAttribute="spittle" 
@@ -22,6 +22,6 @@
 	           class="status-btn round-btn disabled" />
 	    </div>           
 	  </sf:form>
-	</sec:authorize>
+	
   <!--<end id="securityAuthorizeTag_access"/>--> 
 </div>
