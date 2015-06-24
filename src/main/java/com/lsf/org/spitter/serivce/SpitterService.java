@@ -11,4 +11,6 @@ public interface SpitterService {
 	Spitter getSpitter(String username);
 
 	List<Spittle> getSpitterlesForSpitter(String username);
+
+	void saveSpitter(Spitter spitter);
 }

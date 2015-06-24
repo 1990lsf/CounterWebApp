@@ -64,6 +64,12 @@ public class SpitterServiceImpl implements SpitterService{
 		}
 		return spittle_list;
 	}
+
+	@Override
+	public void saveSpitter(Spitter spitter) {
+		// TODO Auto-generated method stub
+		
+	}
 	  
 	
 }

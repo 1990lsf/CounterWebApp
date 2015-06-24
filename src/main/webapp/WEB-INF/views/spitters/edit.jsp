@@ -53,7 +53,7 @@
 
          </td>
       </tr>
-      <tr>
+      <tr>..
          <th></th>
          <td><input name="commit" type="submit" 
                     value="I accept. Create my account." /></td>

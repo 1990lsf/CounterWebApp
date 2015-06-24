@@ -145,7 +145,11 @@
         <artifactId>tiles-template</artifactId>
         <version>3.0.5</version>
     </dependency>
-    
+    <dependency>
+    <groupId>org.jboss.forge.addon</groupId>
+    <artifactId>bean-validation</artifactId>
+    <version>2.17.0.Alpha2</version>
+</dependency>
   </dependencies>
   <build>
     <finalName>CounterWebApp</finalName>
