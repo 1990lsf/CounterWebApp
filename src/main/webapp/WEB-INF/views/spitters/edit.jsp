@@ -48,12 +48,11 @@
          <th></th>
          <td>
             <sf:checkbox path="updateByEmail"/>
-            <sf:label path="updateByEmail" 
-            >Send me email updates!</sf:label>
+            <sf:label path="updateByEmail">Send me email updates!</sf:label>
 
          </td>
       </tr>
-      <tr>..
+      <tr>
          <th></th>
          <td><input name="commit" type="submit" 
                     value="I accept. Create my account." /></td>

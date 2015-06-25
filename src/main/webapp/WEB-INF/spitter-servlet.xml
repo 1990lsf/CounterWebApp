@@ -35,4 +35,5 @@
 </list>
 </property>
 </bean>
+<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" p:maxUploadSize="500000" />
 </beans>
