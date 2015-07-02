@@ -173,7 +173,7 @@ public class SpitterController {
   @RequestMapping(method = RequestMethod.GET, 
           headers = "Accept=application/json")
   public @ResponseBody List<Spitter> allSpitters() {
-    return spitterService.getAllSpitters();
+    return (List<Spitter>) spitterService.getAllSpitters();
   }
 
   @RequestMapping(method = RequestMethod.POST, 

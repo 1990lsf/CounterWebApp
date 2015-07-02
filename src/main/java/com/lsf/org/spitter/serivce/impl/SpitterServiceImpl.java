@@ -70,6 +70,18 @@ public class SpitterServiceImpl implements SpitterService{
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public List<Spittle> getSpittlesForSpitter(String username) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Spitter> getAllSpitters() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	  
 	
 }

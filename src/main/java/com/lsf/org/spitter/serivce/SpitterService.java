@@ -13,4 +13,10 @@ public interface SpitterService {
 	List<Spittle> getSpitterlesForSpitter(String username);
 
 	void saveSpitter(Spitter spitter);
+
+
+
+	List<Spittle> getSpittlesForSpitter(String username);
+
+	List<Spitter> getAllSpitters();
 }
