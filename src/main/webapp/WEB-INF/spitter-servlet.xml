@@ -18,10 +18,8 @@
         http://www.springframework.org/schema/util 
         http://www.springframework.org/schema/util/spring-util-3.1.xsd
         ">
-        <bean id="multipartResolver" class=
-	   "org.springframework.web.multipart.commons.CommonsMultipartResolver"
-     p:maxUploadSize="500000" />
-        <!-- 处理对静态资源的请求 -->
+<bean id="multipartResolver" class= "org.springframework.web.multipart.commons.CommonsMultipartResolver" p:maxUploadSize="500000" />
+<!-- 处理对静态资源的请求 -->
 <mvc:resources mapping="/common/**" location="/common/"/>
 <mvc:annotation-driven/>
 <context:component-scan base-package="com.lsf.org.spitter.*"></context:component-scan>
@@ -41,8 +39,6 @@
 </list>
 </property>
 </bean>
-<util:properties id="s3Properties">
-<prop key="s3.accessKey">123</prop>
-<prop key="s3.secretKey">123</prop>
-</util:properties>
+<util:properties id="s3Properties" location="s3.properties"/>
+
 </beans>
