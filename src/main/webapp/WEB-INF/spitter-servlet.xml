@@ -39,6 +39,6 @@
 </list>
 </property>
 </bean>
-<util:properties id="s3Properties" location="s3.properties"/>
+
 
 </beans>

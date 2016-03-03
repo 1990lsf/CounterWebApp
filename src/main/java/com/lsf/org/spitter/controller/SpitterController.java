@@ -17,7 +17,6 @@ import org.jets3t.service.impl.rest.httpclient.RestS3Service;
 import org.jets3t.service.model.S3Bucket;
 import org.jets3t.service.model.S3Object;
 import org.jets3t.service.security.AWSCredentials;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,9 +41,9 @@ import com.lsf.org.spitter.serivce.SpitterService;
 public class SpitterController {
   private final SpitterService spitterService;
   
-  @Value("#{s3Properties['s3.accessKey']}")
+//  @Value("#{s3Properties['s3.accessKey']}")
   private String s3AccessKey;
-  @Value("#{s3Properties['s3.secretKey']}")
+//  @Value("#{s3Properties['s3.secretKey']}")
   private String s3SecretKey;
   
   @Inject
