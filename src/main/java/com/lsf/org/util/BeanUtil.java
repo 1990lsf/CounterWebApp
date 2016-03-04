@@ -12,11 +12,13 @@ import com.lsf.org.spitter.domain.User;
 
 
 
+
 /**
  * @author Administrator
  *
  */
 public class BeanUtil {
+	public BeanUtil(){}
 /**
  * 完全复制
  * @param class1
@@ -115,7 +117,7 @@ public class BeanUtil {
     		Class clazz2=Class.forName(class2.getClass().getName());
     		Field field = clazz2.getDeclaredField(fieldString); 
             method = clazz2.getDeclaredMethod("set" + methodName,field.getType());
-            return method.invoke(class2,obj1);
+            method.invoke(class2,obj1);
     	}
     	return class2;
     }
@@ -127,6 +129,7 @@ public class BeanUtil {
 		user.setId("12412312");
 		user.setName("支付宝");
 		String[] fieldName = {"id","name"};
+		
 		BeanUtil bu = new BeanUtil();
 		try {
 			Student object=(Student) bu.reflectionAttrByFiledName(user, new Student(),fieldName);
@@ -136,6 +139,7 @@ public class BeanUtil {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		
 
 	}
