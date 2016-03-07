@@ -25,9 +25,9 @@ import org.tmatesoft.svn.core.wc2.SvnOperationFactory;
 import org.tmatesoft.svn.core.wc2.SvnRevisionRange;
 import org.tmatesoft.svn.core.wc2.SvnTarget;
 /**
- * �Զ��������ĳ���
+ * 自动做补丁的程序
  * <strong>Title : Test<br></strong>
- * <strong>Description : </strong>��ע��˵��д�ڴ˴�<br> 
+ * <strong>Description : </strong>类注释说明写在此处<br> 
  * <strong>Create on : Apr 11, 2014<br></strong>
  * <p>
  * <strong>Copyright (C) <br></strong>
@@ -35,24 +35,24 @@ import org.tmatesoft.svn.core.wc2.SvnTarget;
  * @author zhouhaiyun<br>
  * @version <strong>DHCC</strong><br>
  * <br>
- * <strong>�޸���ʷ:</strong><br>
- * �޸���		�޸�����		�޸�����<br>
+ * <strong>修改历史:</strong><br>
+ * 修改人		修改日期		修改描述<br>
  * -------------------------------------------<br>
  * <br>
  * <br>
  */
 public class PatchMaker_report {
 		/**
-		 * ����һ��
+		 * 设置一下
 		 */
-		public static String destPath = "cms\\"; //���·�� ,�����Զ�����
-		public static String tomcatPath = "D:\\DeveloperTools\\Tomcat\\p2p_tomcat\\webapps\\cms\\"; //tomcat��·������Ҫ�����µĶ������ļ�Ŷ
-		public static String start_date = "20141127234500";//�ϴθ���ʱ�� yyyyMMddHHmmss
-		public static String   end_date = "20150131234500";//����ʱ�� yyyyMMddHHmmss
+		public static String destPath = "cms\\"; //输出路径 ,可以自动建立
+		public static String tomcatPath = "D:\\DeveloperTools\\Tomcat\\p2p_tomcat\\webapps\\cms\\"; //tomcat的路径，需要包含最新的二进制文件哦
+		public static String start_date = "20141127234500";//上次更新时间 yyyyMMddHHmmss
+		public static String   end_date = "20150131234500";//截至时间 yyyyMMddHHmmss
 		private static Map<String,String> typeDic = new HashMap<String,String>();
 		static {
-			typeDic.put("M", "�޸�");
-			typeDic.put("A", "����");
+			typeDic.put("M", "修改");
+			typeDic.put("A", "新增");
 		}
 		public static void main(String[] args) {
 			if(args.length>0){
@@ -61,13 +61,13 @@ public class PatchMaker_report {
 				end_date=args[3];
 			}
 			final SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-			final SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy��MM��dd�� HH:mm:ss");
+			final SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
 			final SvnOperationFactory svnOperationFactory = new SvnOperationFactory();
 			try {
-				//svn�� url 
+				//svn的 url 
 				final SVNURL url =  SVNURL.parseURIEncoded("https://risk.dhcc.com.cn:8443/svn/DhcCMS/rdz_p2p/cms");
 				svnOperationFactory.setAuthenticationManager(new BasicAuthenticationManager(
-								"liushaofeng", "123456"));//svn�û�������
+								"liushaofeng", "123456"));//svn用户名密码
 				final SvnLog log = svnOperationFactory.createLog();
 				Date date1 = sdf.parse(start_date);
 				Date date2 = sdf.parse(end_date);
@@ -78,9 +78,9 @@ public class PatchMaker_report {
 					public void receive(SvnTarget arg0, SVNLogEntry arg1)
 							throws SVNException {
 						if(arg1.getAuthor().contains("zhangwei"))return;
-						//ÿ���汾ִ��һ��
-						System.out.println("�汾:"+arg1.getRevision()+"===========���ߣ�"+arg1.getAuthor()+"======ʱ�䣺"+sdf2.format(arg1.getDate()));
-						System.out.println("===�޸�����:"+arg1.getMessage());
+						//每个版本执行一次
+						System.out.println("版本:"+arg1.getRevision()+"===========作者："+arg1.getAuthor()+"======时间："+sdf2.format(arg1.getDate()));
+						System.out.println("===修改内容:"+arg1.getMessage());
 						Map<String,SVNLogEntryPath> map = arg1.getChangedPaths();
 						if(map.size()>0){
 							Set set = map.keySet();
@@ -103,12 +103,12 @@ public class PatchMaker_report {
 			}
 	}
 	/**
-	 * ���� �����ظ��ļ�
+	 * 缓存 处理重复文件
 	 */
 	private static Map<String,String> cache = new HashMap<String,String>();
 	/**
-	 * �����ļ�
-	 * ��������
+	 * 处理文件
+	 * 方法描述
 	 * @param path
 	 */
 	public static void handleFile(String path){
@@ -133,14 +133,14 @@ public class PatchMaker_report {
 					copyFile(srcPath,desPath);
 				}
 			}
-			cache.put(path, "1");//�ŵ�����
+			cache.put(path, "1");//放到缓存
 		}else{
-			//������� ���
+			//处理过了 跳过
 		}
 	}
 	/**
-	 * ������ͨ�ļ�
-	 * ��������
+	 * 复制普通文件
+	 * 方法描述
 	 * @param src
 	 * @param dest
 	 */
@@ -164,8 +164,8 @@ public class PatchMaker_report {
 		}
 	}
 	/**
-	 * ��Ҫ�ǿ��� �����ڲ���� java�ļ�
-	 * ��������
+	 * 主要是考虑 含有内部类的 java文件
+	 * 方法描述
 	 * @param src
 	 * @param dest
 	 */
@@ -179,7 +179,7 @@ public class PatchMaker_report {
 		if(files!=null){
 		for (int i = 0; i < files.length; i++) {
 			if(files[i].getName().startsWith(cname)){
-				//�����ڲ����˰�
+				//包含了内部类了吧
 				String destPath1 = dest+files[i].getName();
 				try {
 					copyFile(files[i],new File(destPath1));
@@ -191,8 +191,8 @@ public class PatchMaker_report {
 		}
 	}
 	/**
-	 * �����ļ�
-	 * ��������
+	 * 复制文件
+	 * 方法描述
 	 * @param sourceFile
 	 * @param targetFile
 	 * @throws IOException
@@ -201,22 +201,22 @@ public class PatchMaker_report {
         BufferedInputStream inBuff = null;
         BufferedOutputStream outBuff = null;
         try {
-            // �½��ļ���������������л���
+            // 新建文件输入流并对它进行缓冲
             inBuff = new BufferedInputStream(new FileInputStream(sourceFile));
 
-            // �½��ļ��������������л���
+            // 新建文件输出流并对它进行缓冲
             outBuff = new BufferedOutputStream(new FileOutputStream(targetFile));
 
-            // ��������
+            // 缓冲数组
             byte[] b = new byte[1024 * 5];
             int len;
             while ((len = inBuff.read(b)) != -1) {
                 outBuff.write(b, 0, len);
             }
-            // ˢ�´˻���������
+            // 刷新此缓冲的输出流
             outBuff.flush();
         } finally {
-            // �ر���
+            // 关闭流
             if (inBuff != null)
                 inBuff.close();
             if (outBuff != null)
