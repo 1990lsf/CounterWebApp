@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.jboss.forge.addon:javaee-spi:forge-addon:2.17.0.Alpha2">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/jboss/forge/addon/javaee-spi/2.17.0.Alpha2/javaee-spi-2.17.0.Alpha2-forge-addon.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/jboss/forge/addon/javaee-spi/2.17.0.Alpha2/javaee-spi-2.17.0.Alpha2-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/jboss/forge/addon/javaee-spi/2.17.0.Alpha2/javaee-spi-2.17.0.Alpha2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
